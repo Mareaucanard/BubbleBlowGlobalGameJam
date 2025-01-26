@@ -1,0 +1,368 @@
+[gd_scene load_steps=19 format=3 uid="uid://dq5npsjuobeab"]
+
+[ext_resource type="Script" path="res://Levels/LevelScripts/moving_wall.gd" id="1_7u47y"]
+[ext_resource type="PackedScene" uid="uid://q8x41e281dgl" path="res://Actors/mine.tscn" id="1_wjbe6"]
+[ext_resource type="PackedScene" uid="uid://bfurslio1jueg" path="res://Actors/bubble.tscn" id="2_qvcab"]
+[ext_resource type="PackedScene" uid="uid://b6gxa75d8f5kb" path="res://Actors/cursor.tscn" id="3_sebt5"]
+[ext_resource type="Script" path="res://Levels/LevelScripts/camera_2d.gd" id="4_0f1fa"]
+[ext_resource type="Texture2D" uid="uid://dsyhfrtswqp1j" path="res://Images/space_background.jpg" id="5_kf0n2"]
+[ext_resource type="PackedScene" uid="uid://dnxw5epdjxyt1" path="res://Levels/LevelScripts/vicotry_defeat_ui.tscn" id="6_wiygj"]
+[ext_resource type="PackedScene" uid="uid://dqmoikfakbapa" path="res://Actors/goal.tscn" id="7_61lhk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uoaw"]
+size = Vector2(250, 10)
+
+[sub_resource type="Gradient" id="Gradient_pidbc"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eps52"]
+gradient = SubResource("Gradient_pidbc")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgm3a"]
+size = Vector2(400, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e44v"]
+size = Vector2(600, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx4cg"]
+size = Vector2(1000, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccliw"]
+size = Vector2(750, 10)
+
+[sub_resource type="Curve2D" id="Curve2D_ksldo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 34, 0, 0, 0, 0, 0, 320, 0, 0, 0, 0, 0, 34)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_4336g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 68, 0, 0, 0, 0, 0, 366, 0, 0, 0, 0, 0, 68)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_i5iwo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="StaticWalls" type="Node2D" parent="Obstacles"]
+
+[node name="Wall1" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(0, 371)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall1"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall1"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall2" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-210, 284)
+rotation = 0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall2"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall2"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall3" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(210, 284)
+rotation = -0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall3"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall3"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall10" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(0, -372)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall10"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall10"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall11" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-210, -285)
+rotation = 2.35619
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall11"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall11"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall12" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(210, -285)
+rotation = 0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall12"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall12"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall4" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-297, 0)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall4"]
+shape = SubResource("RectangleShape2D_wgm3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall4"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(400, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall13" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(210, -459)
+rotation = -0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall13"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall13"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall6" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(595, -198)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall6"]
+shape = SubResource("RectangleShape2D_0e44v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall6"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(600, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall7" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(795, 198)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall7"]
+shape = SubResource("RectangleShape2D_hx4cg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall7"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(1000, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall8" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(1290, -175)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall8"]
+shape = SubResource("RectangleShape2D_ccliw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall8"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(750, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall9" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(795, -546)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall9"]
+shape = SubResource("RectangleShape2D_hx4cg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall9"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(1000, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="BuzzBuzzes" type="Node2D" parent="Obstacles"]
+
+[node name="Path2D" type="Path2D" parent="Obstacles/BuzzBuzzes"]
+position = Vector2(383, -197)
+curve = SubResource("Curve2D_ksldo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D" groups=["Walls"]]
+position = Vector2(0, 34)
+rotation = 1.5708
+script = ExtResource("1_7u47y")
+sec_to_traverse = 3.0
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D/PathFollow2D" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="StaticMine" parent="Obstacles/BuzzBuzzes" instance=ExtResource("1_wjbe6")]
+position = Vector2(1089, -198)
+
+[node name="Path2D2" type="Path2D" parent="Obstacles/BuzzBuzzes"]
+position = Vector2(1089, -197)
+curve = SubResource("Curve2D_4336g")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D2" groups=["Walls"]]
+position = Vector2(0, 68)
+rotation = 1.5708
+script = ExtResource("1_7u47y")
+sec_to_traverse = 3.0
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D2/PathFollow2D" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D2" groups=["Walls"]]
+position = Vector2(0, 127.596)
+rotation = 1.5708
+progress = 59.6
+script = ExtResource("1_7u47y")
+sec_to_traverse = 3.0
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D2/PathFollow2D2" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="Path2D3" type="Path2D" parent="Obstacles/BuzzBuzzes"]
+position = Vector2(1150, -198)
+curve = SubResource("Curve2D_i5iwo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D3" groups=["Walls"]]
+position = Vector2(110, 0)
+progress = 110.0
+script = ExtResource("1_7u47y")
+sec_to_traverse = 1.5
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D3/PathFollow2D" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="Path2D4" type="Path2D" parent="Obstacles/BuzzBuzzes"]
+position = Vector2(568, -549)
+curve = SubResource("Curve2D_ksldo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D4" groups=["Walls"]]
+position = Vector2(0, 83.9984)
+rotation = 1.5708
+progress = 50.0
+script = ExtResource("1_7u47y")
+sec_to_traverse = 2.5
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D4/PathFollow2D" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="Path2D5" type="Path2D" parent="Obstacles/BuzzBuzzes"]
+position = Vector2(632, -549)
+curve = SubResource("Curve2D_ksldo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D5" groups=["Walls"]]
+position = Vector2(0, 134)
+rotation = 1.5708
+progress = 100.0
+script = ExtResource("1_7u47y")
+sec_to_traverse = 2.5
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D5/PathFollow2D" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="Path2D6" type="Path2D" parent="Obstacles/BuzzBuzzes"]
+position = Vector2(696, -549)
+curve = SubResource("Curve2D_ksldo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D6" groups=["Walls"]]
+position = Vector2(0, 184)
+rotation = 1.5708
+progress = 150.0
+script = ExtResource("1_7u47y")
+sec_to_traverse = 2.5
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D6/PathFollow2D" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="Path2D7" type="Path2D" parent="Obstacles/BuzzBuzzes"]
+position = Vector2(760, -549)
+curve = SubResource("Curve2D_ksldo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D7" groups=["Walls"]]
+position = Vector2(0, 234.004)
+rotation = 1.5708
+progress = 200.0
+script = ExtResource("1_7u47y")
+sec_to_traverse = 2.5
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D7/PathFollow2D" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="Path2D8" type="Path2D" parent="Obstacles/BuzzBuzzes"]
+position = Vector2(824, -549)
+curve = SubResource("Curve2D_ksldo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D8" groups=["Walls"]]
+position = Vector2(0, 284.019)
+rotation = 1.5708
+progress = 250.0
+script = ExtResource("1_7u47y")
+sec_to_traverse = 2.5
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D8/PathFollow2D" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="Path2D9" type="Path2D" parent="Obstacles/BuzzBuzzes"]
+position = Vector2(504, -549)
+curve = SubResource("Curve2D_ksldo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/BuzzBuzzes/Path2D9" groups=["Walls"]]
+position = Vector2(0, 34)
+rotation = 1.5708
+script = ExtResource("1_7u47y")
+sec_to_traverse = 2.5
+
+[node name="Mine" parent="Obstacles/BuzzBuzzes/Path2D9/PathFollow2D" instance=ExtResource("1_wjbe6")]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="Bubble" parent="." instance=ExtResource("2_qvcab")]
+
+[node name="Cursor" parent="." node_paths=PackedStringArray("bubble") instance=ExtResource("3_sebt5")]
+bubble = NodePath("../Bubble")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_smoothed = true
+position_smoothing_speed = 100.0
+script = ExtResource("4_0f1fa")
+
+[node name="SpaceBackground" type="Sprite2D" parent="Camera2D"]
+z_index = -1
+position = Vector2(0, 61)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("5_kf0n2")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_wiygj")]
+
+[node name="Goal" parent="." instance=ExtResource("7_61lhk")]
+position = Vector2(268, -372)
+scale = Vector2(2, 2)
+
+[connection signal="on_defeat" from="Bubble" to="CanvasLayer" method="defeat"]
+[connection signal="on_victory" from="Bubble" to="CanvasLayer" method="victory"]

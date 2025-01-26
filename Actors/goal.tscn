@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqmoikfakbapa"]
+
+[ext_resource type="Texture2D" uid="uid://ck0bd254tq70k" path="res://Images/Star.png" id="1_drn2u"]
+[ext_resource type="Script" path="res://Actors/goal.gd" id="1_l37or"]
+[ext_resource type="FontFile" uid="uid://cuvteb7hr2icf" path="res://Actors/open-sans.bold.ttf" id="2_2oyik"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_88vja"]
+font = ExtResource("2_2oyik")
+font_size = 17
+font_color = Color(0, 0, 0, 1)
+
+[node name="Goal" type="StaticBody2D"]
+script = ExtResource("1_l37or")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -33)
+polygon = PackedVector2Array(12, 21, 35, 24, 35, 27, 19, 43, 22, 66, 19, 66, 0, 56, -18, 66, -21, 66, -18, 43, -34, 27, -34, 24, -11, 21, -1, 0, 2, 0)
+
+[node name="Star" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0, 1)
+texture = ExtResource("1_drn2u")
+
+[node name="Label" type="Label" parent="Star"]
+z_index = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -51.5
+offset_right = -40.0
+offset_bottom = -28.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Goal"
+label_settings = SubResource("LabelSettings_88vja")
+horizontal_alignment = 1

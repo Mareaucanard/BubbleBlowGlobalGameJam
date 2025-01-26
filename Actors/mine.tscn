@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://q8x41e281dgl"]
+
+[ext_resource type="Texture2D" uid="uid://d1hfx0s7x6pkf" path="res://Images/sphere.png" id="1_cnfmv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ypv35"]
+radius = 34.0
+
+[node name="Mine" type="StaticBody2D"]
+
+[node name="Sphere" type="Sprite2D" parent="."]
+self_modulate = Color(0.462745, 0.584314, 0.243137, 1)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_cnfmv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ypv35")

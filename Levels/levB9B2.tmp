@@ -1,0 +1,460 @@
+[gd_scene load_steps=21 format=3 uid="uid://c1v0se8el7dx0"]
+
+[ext_resource type="Texture2D" uid="uid://bc3qpver51wwk" path="res://Images/bubble.png" id="1_pvrl2"]
+[ext_resource type="Script" path="res://Levels/LevelScripts/rotating_wall.gd" id="2_5taf1"]
+[ext_resource type="Texture2D" uid="uid://cec002sg2xkfj" path="res://Images/half_circle.png" id="3_s77n8"]
+[ext_resource type="Script" path="res://Levels/LevelScripts/moving_wall.gd" id="4_kifnp"]
+[ext_resource type="PackedScene" uid="uid://bfurslio1jueg" path="res://Actors/bubble.tscn" id="5_if86w"]
+[ext_resource type="PackedScene" uid="uid://b6gxa75d8f5kb" path="res://Actors/cursor.tscn" id="6_j0kds"]
+[ext_resource type="Script" path="res://Levels/LevelScripts/camera_2d.gd" id="7_6q8dw"]
+[ext_resource type="Texture2D" uid="uid://dsyhfrtswqp1j" path="res://Images/space_background.jpg" id="8_whflw"]
+[ext_resource type="PackedScene" uid="uid://dnxw5epdjxyt1" path="res://Levels/LevelScripts/vicotry_defeat_ui.tscn" id="9_wl2lp"]
+[ext_resource type="PackedScene" uid="uid://dqmoikfakbapa" path="res://Actors/goal.tscn" id="10_w1oq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uoaw"]
+size = Vector2(250, 10)
+
+[sub_resource type="Gradient" id="Gradient_pidbc"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eps52"]
+gradient = SubResource("Gradient_pidbc")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nei2v"]
+size = Vector2(500, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mr5sa"]
+size = Vector2(1500, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0ki4"]
+size = Vector2(350, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6t1k6"]
+size = Vector2(200, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1srx"]
+size = Vector2(275, 10)
+
+[sub_resource type="Curve2D" id="Curve2D_nkcko"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 600, -200, 0, 0, 0, 0, -600, -200)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l352h"]
+size = Vector2(300, 10)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Bubble2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-285.5, -1531)
+scale = Vector2(3, 3)
+texture = ExtResource("1_pvrl2")
+
+[node name="Marker2D" type="Marker2D" parent="Bubble2"]
+position = Vector2(23.1667, 27.3333)
+
+[node name="Marker2D2" type="Marker2D" parent="Bubble2"]
+position = Vector2(-33.8333, 12.6667)
+
+[node name="Marker2D3" type="Marker2D" parent="Bubble2"]
+position = Vector2(24.1667, -25.6667)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="StaticWalls" type="Node2D" parent="Obstacles"]
+
+[node name="Wall1" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(0, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall1"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall1"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall2" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-210, 213)
+rotation = 0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall2"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall2"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall3" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(210, 213)
+rotation = -0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall3"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall3"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall4" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(297, -122)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall4"]
+shape = SubResource("RectangleShape2D_nei2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall4"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(500, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall5" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-299, -122)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall5"]
+shape = SubResource("RectangleShape2D_nei2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall5"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(500, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall6" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(155, -572)
+rotation = 0.959931
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall6"]
+shape = SubResource("RectangleShape2D_nei2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall6"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(500, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall7" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-441, -573)
+rotation = 0.959931
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall7"]
+shape = SubResource("RectangleShape2D_nei2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall7"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(500, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall8" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-583, -1525)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall8"]
+shape = SubResource("RectangleShape2D_mr5sa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall8"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(1500, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall9" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(12, -1524)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall9"]
+shape = SubResource("RectangleShape2D_mr5sa")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall9"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(1500, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall10" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-286, -2446)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall10"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall10"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall11" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-496, -2359)
+rotation = 2.35619
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall11"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall11"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall12" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-76, -2359)
+rotation = 0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall12"]
+shape = SubResource("RectangleShape2D_8uoaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall12"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(250, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall13" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-103, -1314)
+rotation = 0.872665
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall13"]
+shape = SubResource("RectangleShape2D_e0ki4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall13"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(350, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall14" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-485, -1476)
+rotation = -0.174533
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall14"]
+shape = SubResource("RectangleShape2D_6t1k6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall14"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(200, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Wall15" type="StaticBody2D" parent="Obstacles/StaticWalls"]
+position = Vector2(-100, -1688)
+rotation = -0.610865
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/StaticWalls/Wall15"]
+shape = SubResource("RectangleShape2D_j1srx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/StaticWalls/Wall15"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(275, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="CircleWalls" type="Node2D" parent="Obstacles"]
+
+[node name="InnerWall1" type="StaticBody2D" parent="Obstacles/CircleWalls" groups=["Walls"]]
+position = Vector2(-286, -1531)
+scale = Vector2(3, 3)
+script = ExtResource("2_5taf1")
+seconds_per_turn = 14
+
+[node name="HalfCircle" type="Sprite2D" parent="Obstacles/CircleWalls/InnerWall1"]
+self_modulate = Color(0, 1, 0, 1)
+texture = ExtResource("3_s77n8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/CircleWalls/InnerWall1"]
+position = Vector2(-6, -48)
+polygon = PackedVector2Array(6, 9, 15, 10, 24, 13, 32, 18, 38, 25, 42, 32, 45, 41, 45, 49, 37, 46, 36, 39, 33, 32, 28, 26, 22, 21, 13, 17, 6, 17)
+
+[node name="InnerWall2" type="StaticBody2D" parent="Obstacles/CircleWalls" groups=["Walls"]]
+position = Vector2(-286, -1531)
+rotation = 3.14159
+scale = Vector2(3, 3)
+script = ExtResource("2_5taf1")
+seconds_per_turn = 14
+
+[node name="HalfCircle" type="Sprite2D" parent="Obstacles/CircleWalls/InnerWall2"]
+self_modulate = Color(0, 1, 0, 1)
+texture = ExtResource("3_s77n8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/CircleWalls/InnerWall2"]
+position = Vector2(-6, -48)
+polygon = PackedVector2Array(6, 9, 15, 10, 24, 13, 32, 18, 38, 25, 42, 32, 45, 41, 45, 49, 37, 46, 36, 39, 33, 32, 28, 26, 22, 21, 13, 17, 6, 17)
+
+[node name="OuterWall1" type="StaticBody2D" parent="Obstacles/CircleWalls" groups=["Walls"]]
+position = Vector2(-286, -1531)
+scale = Vector2(8, 8)
+script = ExtResource("2_5taf1")
+seconds_per_turn = -36
+
+[node name="HalfCircle" type="Sprite2D" parent="Obstacles/CircleWalls/OuterWall1"]
+self_modulate = Color(0, 1, 0, 1)
+texture = ExtResource("3_s77n8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/CircleWalls/OuterWall1"]
+position = Vector2(-6, -48)
+polygon = PackedVector2Array(6, 9, 15, 10, 24, 13, 32, 18, 38, 25, 42, 32, 45, 41, 45, 49, 37, 46, 36, 39, 33, 32, 28, 26, 22, 21, 13, 17, 6, 17)
+
+[node name="OuterWall3" type="StaticBody2D" parent="Obstacles/CircleWalls" groups=["Walls"]]
+position = Vector2(-286, -1531)
+rotation = 4.18879
+scale = Vector2(8, 8)
+script = ExtResource("2_5taf1")
+seconds_per_turn = -36
+
+[node name="HalfCircle" type="Sprite2D" parent="Obstacles/CircleWalls/OuterWall3"]
+self_modulate = Color(0, 1, 0, 1)
+texture = ExtResource("3_s77n8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/CircleWalls/OuterWall3"]
+position = Vector2(-6, -48)
+polygon = PackedVector2Array(6, 9, 15, 10, 24, 13, 32, 18, 38, 25, 42, 32, 45, 41, 45, 49, 37, 46, 36, 39, 33, 32, 28, 26, 22, 21, 13, 17, 6, 17)
+
+[node name="OuterWall2" type="StaticBody2D" parent="Obstacles/CircleWalls" groups=["Walls"]]
+position = Vector2(-286, -1533)
+rotation = 2.0944
+scale = Vector2(8, 8)
+script = ExtResource("2_5taf1")
+seconds_per_turn = -36
+
+[node name="HalfCircle" type="Sprite2D" parent="Obstacles/CircleWalls/OuterWall2"]
+self_modulate = Color(0, 1, 0, 1)
+texture = ExtResource("3_s77n8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/CircleWalls/OuterWall2"]
+position = Vector2(-6, -48)
+polygon = PackedVector2Array(6, 9, 15, 10, 24, 13, 32, 18, 38, 25, 42, 32, 45, 41, 45, 49, 37, 46, 36, 39, 33, 32, 28, 26, 22, 21, 13, 17, 6, 17)
+
+[node name="MovingWalls" type="Node2D" parent="Obstacles"]
+
+[node name="Path2D" type="Path2D" parent="Obstacles/MovingWalls"]
+curve = SubResource("Curve2D_nkcko")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/MovingWalls/Path2D" groups=["Walls"]]
+position = Vector2(450.007, -200)
+rotation = 3.14159
+progress = 150.0
+rotates = false
+script = ExtResource("4_kifnp")
+
+[node name="Wall1" type="StaticBody2D" parent="Obstacles/MovingWalls/Path2D/PathFollow2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/MovingWalls/Path2D/PathFollow2D/Wall1"]
+shape = SubResource("RectangleShape2D_l352h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/MovingWalls/Path2D/PathFollow2D/Wall1"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(300, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Obstacles/MovingWalls/Path2D" groups=["Walls"]]
+position = Vector2(-150, -200)
+rotation = 3.14159
+progress = 750.0
+script = ExtResource("4_kifnp")
+
+[node name="Wall1" type="StaticBody2D" parent="Obstacles/MovingWalls/Path2D/PathFollow2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/MovingWalls/Path2D/PathFollow2D2/Wall1"]
+shape = SubResource("RectangleShape2D_l352h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/MovingWalls/Path2D/PathFollow2D2/Wall1"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(300, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Path2D2" type="Path2D" parent="Obstacles/MovingWalls"]
+position = Vector2(-234, -508)
+curve = SubResource("Curve2D_nkcko")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/MovingWalls/Path2D2" groups=["Walls"]]
+position = Vector2(450.007, -200)
+rotation = 3.14159
+progress = 150.0
+rotates = false
+script = ExtResource("4_kifnp")
+
+[node name="Wall1" type="StaticBody2D" parent="Obstacles/MovingWalls/Path2D2/PathFollow2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/MovingWalls/Path2D2/PathFollow2D/Wall1"]
+shape = SubResource("RectangleShape2D_l352h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/MovingWalls/Path2D2/PathFollow2D/Wall1"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(300, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Obstacles/MovingWalls/Path2D2" groups=["Walls"]]
+position = Vector2(-150, -200)
+rotation = 3.14159
+progress = 750.0
+script = ExtResource("4_kifnp")
+
+[node name="Wall1" type="StaticBody2D" parent="Obstacles/MovingWalls/Path2D2/PathFollow2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/MovingWalls/Path2D2/PathFollow2D2/Wall1"]
+shape = SubResource("RectangleShape2D_l352h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/MovingWalls/Path2D2/PathFollow2D2/Wall1"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(300, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Path2D3" type="Path2D" parent="Obstacles/MovingWalls"]
+position = Vector2(-192, -445)
+curve = SubResource("Curve2D_nkcko")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Obstacles/MovingWalls/Path2D3" groups=["Walls"]]
+position = Vector2(450.007, -200)
+rotation = 3.14159
+progress = 150.0
+rotates = false
+script = ExtResource("4_kifnp")
+
+[node name="Wall1" type="StaticBody2D" parent="Obstacles/MovingWalls/Path2D3/PathFollow2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/MovingWalls/Path2D3/PathFollow2D/Wall1"]
+shape = SubResource("RectangleShape2D_l352h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/MovingWalls/Path2D3/PathFollow2D/Wall1"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(300, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Obstacles/MovingWalls/Path2D3" groups=["Walls"]]
+position = Vector2(-150, -200)
+rotation = 3.14159
+progress = 750.0
+script = ExtResource("4_kifnp")
+
+[node name="Wall1" type="StaticBody2D" parent="Obstacles/MovingWalls/Path2D3/PathFollow2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/MovingWalls/Path2D3/PathFollow2D2/Wall1"]
+shape = SubResource("RectangleShape2D_l352h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacles/MovingWalls/Path2D3/PathFollow2D2/Wall1"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(300, 10)
+texture = SubResource("GradientTexture1D_eps52")
+
+[node name="Bubble" parent="." instance=ExtResource("5_if86w")]
+
+[node name="Cursor" parent="." node_paths=PackedStringArray("bubble") instance=ExtResource("6_j0kds")]
+bubble = NodePath("../Bubble")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("7_6q8dw")
+
+[node name="SpaceBackground" type="Sprite2D" parent="Camera2D"]
+z_index = -1
+position = Vector2(0, 61)
+scale = Vector2(0.57, 0.57)
+texture = ExtResource("8_whflw")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("9_wl2lp")]
+
+[node name="Goal" parent="." instance=ExtResource("10_w1oq7")]
+position = Vector2(-286, -2359)
+scale = Vector2(2, 2)
+
+[node name="Goal2" parent="." instance=ExtResource("10_w1oq7")]
+position = Vector2(2, 195)
+scale = Vector2(2, 2)
+
+[connection signal="on_defeat" from="Bubble" to="CanvasLayer" method="defeat"]
+[connection signal="on_victory" from="Bubble" to="CanvasLayer" method="victory"]

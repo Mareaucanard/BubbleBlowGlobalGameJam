@@ -1,0 +1,265 @@
+[gd_scene load_steps=8 format=3 uid="uid://cffxuudh201h5"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_lk71k"]
+[ext_resource type="PackedScene" uid="uid://bfurslio1jueg" path="res://Actors/bubble.tscn" id="2_s8org"]
+[ext_resource type="PackedScene" uid="uid://b6gxa75d8f5kb" path="res://Actors/cursor.tscn" id="3_ym7k4"]
+[ext_resource type="PackedScene" uid="uid://dqmoikfakbapa" path="res://Actors/goal.tscn" id="4_f4lmy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_os6gl"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ktph"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_whmqw"]
+font_size = 120
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lk71k")
+
+[node name="Help UI" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Help text" type="Label" parent="Help UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -398.0
+offset_top = -142.5
+offset_right = 398.0
+offset_bottom = 234.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "The goal of the game is to guide your bubble to the goal.
+If the bubble hits anything other than the goal, it explodes.
+
+Your cursor can create a gust of wind towards the bubble,
+accelerating the bubble the that direction.
+
+This was inspired by Super Mario Galaxy's Bubble Blast Galaxy.
+
+
+Background provided by NASA
+"
+label_settings = SubResource("LabelSettings_os6gl")
+horizontal_alignment = 1
+
+[node name="Exit help text" type="Button" parent="Help UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -165.0
+offset_right = 38.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Exit help"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Help UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 53.0
+offset_bottom = 53.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="Help UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Bubble" parent="Help UI/HBoxContainer/Control" instance=ExtResource("2_s8org")]
+position = Vector2(0, 50)
+script = null
+
+[node name="Label" type="Label" parent="Help UI/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = -41.0
+offset_right = 51.0
+offset_bottom = 1.0
+grow_horizontal = 2
+text = "Bubble"
+label_settings = SubResource("LabelSettings_2ktph")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="Help UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Cursor" parent="Help UI/HBoxContainer/Control2" instance=ExtResource("3_ym7k4")]
+position = Vector2(0, 50)
+script = null
+
+[node name="Label" type="Label" parent="Help UI/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = -41.0
+offset_right = 51.0
+offset_bottom = 1.0
+grow_horizontal = 2
+text = "Cursor"
+label_settings = SubResource("LabelSettings_2ktph")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="Help UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Goal" parent="Help UI/HBoxContainer/Control3" instance=ExtResource("4_f4lmy")]
+position = Vector2(0, 50)
+script = null
+
+[node name="Label" type="Label" parent="Help UI/HBoxContainer/Control3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = -41.0
+offset_right = 51.0
+offset_bottom = 1.0
+grow_horizontal = 2
+text = "Goal"
+label_settings = SubResource("LabelSettings_2ktph")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BaseMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="BaseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="BaseMenu/Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -355.0
+offset_top = 64.0
+offset_right = 355.0
+offset_bottom = 229.0
+grow_horizontal = 2
+text = "Bubble blow"
+label_settings = SubResource("LabelSettings_whmqw")
+horizontal_alignment = 1
+
+[node name="Level1" type="Button" parent="BaseMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -302.0
+offset_right = 47.0
+offset_bottom = -271.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play level 1"
+
+[node name="Level2" type="Button" parent="BaseMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -251.0
+offset_right = 47.0
+offset_bottom = -220.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play level 2"
+
+[node name="Level3" type="Button" parent="BaseMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -203.0
+offset_right = 47.0
+offset_bottom = -172.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play level 3"
+
+[node name="Help" type="Button" parent="BaseMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -158.0
+offset_right = 22.0
+offset_bottom = -127.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Help"
+
+[node name="Exit" type="Button" parent="BaseMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -109.0
+offset_right = 42.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Exit game"
+
+[connection signal="pressed" from="Help UI/Exit help text" to="." method="_on_exit_help_text_pressed"]
+[connection signal="pressed" from="BaseMenu/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="BaseMenu/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="BaseMenu/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="BaseMenu/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="BaseMenu/Exit" to="." method="_on_exit_pressed"]

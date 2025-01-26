@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6gxa75d8f5kb"]
+
+[ext_resource type="Script" path="res://Actors/cursor.gd" id="1_pxvwu"]
+[ext_resource type="Texture2D" uid="uid://ck0bd254tq70k" path="res://Images/Star.png" id="2_hjvbj"]
+[ext_resource type="Texture2D" uid="uid://d2i8ggd3p7p2u" path="res://Images/Tuba.png" id="3_3i57x"]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("1_pxvwu")
+
+[node name="Tuba" type="Sprite2D" parent="."]
+self_modulate = Color(0.258824, 0.254902, 1, 1)
+texture = ExtResource("3_3i57x")
+
+[node name="Star" type="Sprite2D" parent="."]
+self_modulate = Color(0.0901961, 0.643137, 1, 1)
+texture = ExtResource("2_hjvbj")
